@@ -494,5 +494,5 @@ if (buscadorInput) {
   buscadorInput.addEventListener('input', filtrarCamisetas);
 }
 
-// Iniciar
+// Iniciar proyecto mostrando la pantalla correcta
 mostrarApp();
