@@ -15,10 +15,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'mi_secreto_super_seguro_2027';
 
-if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
+// Reemplazo de la línea 18: Usar la carpeta /tmp que sí tiene permisos de escritura en Vercel
+const pathUploads = path.join('/tmp', 'uploads');
+if (!fs.existsSync(pathUploads)) {
+  fs.mkdirSync(pathUploads, { recursive: true });
+}
+
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
+  destination: (req, file, cb) => cb(null, '/tmp/uploads/'), // Cambiado a /tmp
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
     cb(null, `${Date.now()}-${Math.round(Math.random() * 1E9)}${ext}`);
@@ -29,7 +34,8 @@ const upload = multer({ storage });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'Public')));
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('/tmp/uploads')); // Cambiado a /tmp
+
 
 function verificarToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -114,11 +120,18 @@ app.get('/api/me', verificarToken, async (req, res) => {
 });
 
 // Avatar
+// Avatar corregido
 app.post('/api/avatar', verificarToken, upload.single('avatar'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ mensaje: 'No se recibió imagen.' });
     const usuario = await Usuario.findById(req.usuarioId);
-    if (usuario.avatar && fs.existsSync(`uploads/${usuario.avatar}`)) fs.unlinkSync(`uploads/${usuario.avatar}`);
+    
+    // Cambiado para borrar desde /tmp
+    const pathAvatarAnterior = path.join('/tmp', 'uploads', usuario.avatar || '');
+    if (usuario.avatar && fs.existsSync(pathAvatarAnterior)) {
+        fs.unlinkSync(pathAvatarAnterior);
+    }
+    
     usuario.avatar = req.file.filename;
     await usuario.save();
     res.json({ mensaje: 'Avatar actualizado', avatar: usuario.avatar });
@@ -126,6 +139,7 @@ app.post('/api/avatar', verificarToken, upload.single('avatar'), async (req, res
     res.status(500).json({ mensaje: 'Error al subir avatar.' });
   }
 });
+
 
 // CREAR diseño (POST)
 app.post('/api/camisetas', verificarToken, async (req, res) => {
