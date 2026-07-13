@@ -114,10 +114,63 @@ async function cargarEstadisticas() {
 }
 
 // ==========================
-// CRUD DE CAMISETAS - FUNCIONES CLAVE CORREGIDAS
+// CREAR MINIATURA SVG DE LA CAMISETA
 // ==========================
+function crearMiniaturaCamiseta(camiseta) {
+  // Obtener colores con valores por defecto
+  const torso = camiseta.torsoColor || '#E8E3D6';
+  const mangaIzq = camiseta.mangaIzquierdaColor || '#E8E3D6';
+  const mangaDer = camiseta.mangaDerechaColor || '#E8E3D6';
+  const cuello = camiseta.cuelloColor || '#D7D0C3';
+  const bordeIzq = camiseta.bordeMangaIzquierdaColor || '#3F5D44';
+  const bordeDer = camiseta.bordeMangaDerechaColor || '#3F5D44';
+  const bolsillo = camiseta.bolsilloColor || '#E8E3D6';
+  const textoDB = camiseta.textoDBColor || '#2B2E2C';
+  const solapaIzq = camiseta.solapaIzquierdaColor || '#E8E3D6';
+  const solapaDer = camiseta.solapaDerechaColor || '#E8E3D6';
+  
+  // Generar el SVG en miniatura (más pequeño que el original)
+  return `
+    <svg class="mini-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- MANGA IZQUIERDA -->
+      <path d="M60 48 L22 82 L50 120 L76 98 Z" fill="${mangaIzq}" stroke="#2B2E2C" stroke-width="2"/>
+      
+      <!-- BORDE MANGA IZQUIERDA -->
+      <path d="M22 82 L50 120 L58 112 L30 74 Z" fill="${bordeIzq}" stroke="#2B2E2C" stroke-width="1.5"/>
+      
+      <!-- MANGA DERECHA -->
+      <path d="M140 48 L178 82 L150 120 L124 98 Z" fill="${mangaDer}" stroke="#2B2E2C" stroke-width="2"/>
+      
+      <!-- BORDE MANGA DERECHA -->
+      <path d="M178 82 L150 120 L142 112 L170 74 Z" fill="${bordeDer}" stroke="#2B2E2C" stroke-width="1.5"/>
+      
+      <!-- TORSO -->
+      <path d="M60 48 L140 48 L152 200 Q100 212 48 200 Z" fill="${torso}" stroke="#2B2E2C" stroke-width="2"/>
+      
+      <!-- CUELLO -->
+      <path d="M74 42 Q100 50 126 42 L118 58 Q100 80 82 58 Z" fill="${cuello}" stroke="#2B2E2C" stroke-width="1.5"/>
+      
+      <!-- SOLAPA IZQUIERDA -->
+      <polygon points="70,38 100,68 88,82 58,48" fill="${solapaIzq}" stroke="#2B2E2C" stroke-width="1.5"/>
+      
+      <!-- SOLAPA DERECHA -->
+      <polygon points="130,38 100,68 112,82 142,48" fill="${solapaDer}" stroke="#2B2E2C" stroke-width="1.5"/>
+      
+      <!-- BOLSILLO -->
+      <path d="M58 88 L84 88 L80 116 L62 116 Z" fill="${bolsillo}" stroke="#3F5D44" stroke-width="2.5"/>
+      
+      <!-- TEXTO DB -->
+      <text x="70.8" y="105" text-anchor="middle" font-size="10" font-weight="bold" fill="${textoDB}" font-family="Inter, sans-serif">DB</text>
+      
+      <!-- TEXTO GEN -->
+      <text x="100" y="158" text-anchor="middle" font-size="20" font-weight="800" fill="#2B2E2C" font-family="Inter, sans-serif">GEN 27</text>
+    </svg>
+  `;
+}
 
-// Obtiene TODOS los colores actuales del SVG (sin depender de selección)
+// ==========================
+// CRUD DE CAMISETAS
+// ==========================
 function obtenerColoresCompletos() {
   const getFill = (id, defaultValue) => {
     const el = document.getElementById(id);
@@ -221,6 +274,9 @@ function renderizarCamisetas(camisetas, usuario) {
     }
     const desglose = Object.entries(votosCount).map(([k, v]) => `${k}⭐: ${v}`).join(', ');
     
+    // Crear miniatura SVG de la camiseta con los colores del diseño
+    const miniaturaSVG = crearMiniaturaCamiseta(c);
+    
     const tarjeta = document.createElement('div');
     tarjeta.classList.add('tarjeta-camiseta');
     tarjeta.innerHTML = `
@@ -231,16 +287,7 @@ function renderizarCamisetas(camisetas, usuario) {
         ${desglose ? `<p><small>${desglose}</small></p>` : ''}
         <p class="descripcion-card">📝 ${escapeHTML(c.descripcion || 'Sin descripción.')}</p>
         <div class="mini-camisa">
-          <div class="color-box" style="background:${c.torsoColor || '#E8E3D6'}" title="Torso"></div>
-          <div class="color-box" style="background:${c.mangaIzquierdaColor || '#E8E3D6'}" title="Manga izq"></div>
-          <div class="color-box" style="background:${c.mangaDerechaColor || '#E8E3D6'}" title="Manga der"></div>
-          <div class="color-box" style="background:${c.cuelloColor || '#D7D0C3'}" title="Cuello"></div>
-          <div class="color-box" style="background:${c.bordeMangaIzquierdaColor || '#3F5D44'}" title="Borde izq"></div>
-          <div class="color-box" style="background:${c.bordeMangaDerechaColor || '#3F5D44'}" title="Borde der"></div>
-          <div class="color-box" style="background:${c.bolsilloColor || '#E8E3D6'}" title="Bolsillo"></div>
-          <div class="color-box" style="background:${c.textoDBColor || '#2B2E2C'}" title="Texto DB"></div>
-          <div class="color-box" style="background:${c.solapaIzquierdaColor || '#E8E3D6'}" title="Solapa izq"></div>
-          <div class="color-box" style="background:${c.solapaDerechaColor || '#E8E3D6'}" title="Solapa der"></div>
+          ${miniaturaSVG}
         </div>
       </div>
       <div class="acciones-card">
@@ -465,7 +512,7 @@ btnActualizar.addEventListener('click', async () => {
   const camiseta = obtenerDatosFormulario();
   if (!camiseta) return;
   
-  console.log('Enviando actualización con todos los colores:', camiseta); // Para depurar
+  console.log('Enviando actualización con todos los colores:', camiseta);
   
   try {
     const res = await fetch(`/api/camisetas/${id}`, {
@@ -494,5 +541,5 @@ if (buscadorInput) {
   buscadorInput.addEventListener('input', filtrarCamisetas);
 }
 
-// Iniciar proyecto mostrando la pantalla correcta
+// Iniciar
 mostrarApp();
