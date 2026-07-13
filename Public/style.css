@@ -5,10 +5,12 @@
 }
 
 :root {
-  --verde-oscuro: #3F5D44;
-  --verde-suave: #6F8F7A;
-  --verde-claro: #AFC4B6;
-  --crema: #E8E3D6;
+  --verde-oliva: #A3B18A;
+  --beige: #DAD7CD;
+  --verde-medio: #588157;
+  --verde-oscuro: #3A5A40;
+  --verde-muy-oscuro: #344E41;
+  --crema: #F5F2EB;
   --gris-oscuro: #2B2E2C;
   --white: #ffffff;
   --red: #dc2626;
@@ -20,7 +22,7 @@
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: #f3f4f6;
+  background: var(--beige);
   color: var(--gris-oscuro);
   min-height: 100vh;
 }
@@ -38,7 +40,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 35px 20px;
-  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-suave) 100%);
+  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-muy-oscuro) 100%);
 }
 
 .auth-container {
@@ -51,7 +53,7 @@ body {
 }
 
 .auth-brand {
-  background: rgba(43, 46, 44, 0.85);
+  background: rgba(52, 78, 65, 0.9);
   backdrop-filter: blur(10px);
   color: white;
   border-radius: 32px;
@@ -61,9 +63,9 @@ body {
 
 .badge {
   display: inline-block;
-  background: rgba(175, 196, 182, 0.2);
-  color: var(--crema);
-  border: 1px solid rgba(175, 196, 182, 0.4);
+  background: rgba(163, 177, 138, 0.3);
+  color: var(--beige);
+  border: 1px solid rgba(163, 177, 138, 0.4);
   padding: 7px 14px;
   border-radius: 999px;
   font-size: 12px;
@@ -94,7 +96,7 @@ body {
 .auth-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--crema);
+  background: var(--beige);
   padding: 6px;
   border-radius: 18px;
   margin-bottom: 28px;
@@ -135,7 +137,7 @@ body {
 .auth-form input {
   width: 100%;
   padding: 14px 16px;
-  border: 1.5px solid var(--verde-claro);
+  border: 1.5px solid var(--verde-oliva);
   border-radius: 14px;
   font-size: 15px;
   transition: all 0.2s;
@@ -144,7 +146,7 @@ body {
 .auth-form input:focus {
   outline: none;
   border-color: var(--verde-oscuro);
-  box-shadow: 0 0 0 3px rgba(63, 93, 68, 0.1);
+  box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
 }
 
 .btn-primary {
@@ -160,7 +162,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--verde-suave);
+  background: var(--verde-medio);
   transform: translateY(-2px);
 }
 
@@ -168,7 +170,7 @@ body {
 /* APP SCREEN */
 /* ========================= */
 .hero {
-  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-suave));
+  background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-muy-oscuro));
   color: white;
   padding: 48px 20px;
   text-align: center;
@@ -180,7 +182,7 @@ body {
 }
 
 .hero p {
-  color: var(--crema);
+  color: var(--beige);
   font-size: 16px;
 }
 
@@ -318,7 +320,7 @@ body {
 .buscador-input {
   width: 100%;
   padding: 14px 20px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--verde-oliva);
   border-radius: 40px;
   font-size: 15px;
   background: white;
@@ -328,13 +330,13 @@ body {
 .buscador-input:focus {
   outline: none;
   border-color: var(--verde-oscuro);
-  box-shadow: 0 0 0 4px rgba(63, 93, 68, 0.1);
+  box-shadow: 0 0 0 4px rgba(58, 90, 64, 0.1);
 }
 
 .input-moderno, textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1.5px solid var(--verde-claro);
+  border: 1.5px solid var(--verde-oliva);
   border-radius: 14px;
   font-family: inherit;
   font-size: 14px;
@@ -345,7 +347,7 @@ body {
 .input-moderno:focus, textarea:focus {
   outline: none;
   border-color: var(--verde-oscuro);
-  box-shadow: 0 0 0 3px rgba(63, 93, 68, 0.1);
+  box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
 }
 
 textarea {
@@ -365,7 +367,7 @@ textarea {
   width: 60px;
   height: 50px;
   border-radius: 12px;
-  border: 2px solid var(--verde-claro);
+  border: 2px solid var(--verde-oliva);
   cursor: pointer;
 }
 
@@ -405,8 +407,17 @@ button:hover {
   color: white;
 }
 
+.btn-primary:hover {
+  background: var(--verde-medio);
+}
+
 .btn-secondary {
-  background: var(--verde-suave);
+  background: var(--verde-oliva);
+  color: var(--gris-oscuro);
+}
+
+.btn-secondary:hover {
+  background: var(--verde-medio);
   color: white;
 }
 
@@ -451,7 +462,7 @@ button:hover {
 .parte-activa {
   stroke: var(--verde-oscuro);
   stroke-width: 5;
-  filter: drop-shadow(0 0 5px rgba(63, 93, 68, 0.5));
+  filter: drop-shadow(0 0 5px rgba(58, 90, 64, 0.5));
 }
 
 .lista-disenos {
@@ -472,12 +483,13 @@ button:hover {
   gap: 24px;
   box-shadow: var(--shadow);
   transition: all 0.3s;
-  border: 1px solid #f3f4f6;
+  border: 1px solid var(--verde-oliva);
 }
 
 .tarjeta-camiseta:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  border-color: var(--verde-medio);
 }
 
 .camiseta-info {
@@ -489,12 +501,12 @@ button:hover {
 .camiseta-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--gris-oscuro);
+  color: var(--verde-muy-oscuro);
   margin-bottom: 4px;
 }
 
 .camiseta-info .autor {
-  color: var(--verde-suave);
+  color: var(--verde-medio);
   font-weight: 500;
   font-size: 14px;
 }
@@ -504,7 +516,7 @@ button:hover {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  background: #f9fafb;
+  background: var(--crema);
   padding: 8px 12px;
   border-radius: 10px;
   margin: 4px 0;
@@ -532,9 +544,9 @@ button:hover {
   line-height: 1.5;
   margin: 4px 0;
   padding: 8px 12px;
-  background: #f9fafb;
+  background: var(--crema);
   border-radius: 8px;
-  border-left: 3px solid var(--verde-claro);
+  border-left: 3px solid var(--verde-oliva);
 }
 
 /* MINIATURA DE CAMISETA */
@@ -542,11 +554,11 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  background: linear-gradient(135deg, var(--crema) 0%, var(--beige) 100%);
   border-radius: var(--radius);
   padding: 16px;
   margin-top: 8px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--verde-oliva);
 }
 
 .mini-svg {
@@ -568,9 +580,9 @@ button:hover {
   gap: 6px;
   margin-top: 8px;
   padding: 10px 12px;
-  background: #f9fafb;
+  background: var(--crema);
   border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--verde-oliva);
 }
 
 .paleta-item {
@@ -582,16 +594,17 @@ button:hover {
 }
 
 .color-dot-mini {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 6px;
-  border: 1.5px solid #d1d5db;
+  border: 2px solid rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
 
 .color-dot-mini:hover {
   transform: scale(1.2);
   z-index: 2;
+  border-color: var(--verde-oscuro);
 }
 
 .acciones-card {
@@ -664,7 +677,7 @@ button:hover {
   padding: 60px 20px;
   background: var(--crema);
   border-radius: var(--radius);
-  color: var(--verde-suave);
+  color: var(--verde-medio);
   font-size: 16px;
 }
 
