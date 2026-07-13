@@ -4,27 +4,10 @@
   box-sizing: border-box;
 }
 
-:root {
-  --verde-oliva: #A3B18A;
-  --beige: #DAD7CD;
-  --verde-medio: #588157;
-  --verde-oscuro: #3A5A40;
-  --verde-muy-oscuro: #344E41;
-  --crema-suave: #F0EDE5;
-  --gris-oscuro: #2B2E2C;
-  --white: #ffffff;
-  --red: #dc2626;
-  --orange: #f59e0b;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --radius: 16px;
-  --radius-sm: 10px;
-}
-
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: var(--beige);
-  color: var(--gris-oscuro);
+  background: #DAD7CD;
+  color: #2B2E2C;
   min-height: 100vh;
 }
 
@@ -33,7 +16,7 @@ body {
 }
 
 /* ========================= */
-/* AUTH SCREEN */
+/* AUTH SCREEN - MEJOR CONTRASTE */
 /* ========================= */
 .auth-screen {
   min-height: 100vh;
@@ -41,7 +24,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 35px 20px;
-  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-muy-oscuro) 100%);
+  background: linear-gradient(135deg, #3A5A40 0%, #588157 100%);
 }
 
 .auth-container {
@@ -54,18 +37,19 @@ body {
 }
 
 .auth-brand {
-  background: rgba(52, 78, 65, 0.92);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
   color: white;
   border-radius: 32px;
   padding: 48px;
   box-shadow: 0 25px 55px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.badge {
+.auth-brand .badge {
   display: inline-block;
   background: rgba(163, 177, 138, 0.25);
-  color: var(--beige);
+  color: #DAD7CD;
   border: 1px solid rgba(163, 177, 138, 0.3);
   padding: 7px 14px;
   border-radius: 999px;
@@ -79,16 +63,18 @@ body {
   font-size: clamp(32px, 5vw, 52px);
   line-height: 1.1;
   margin-bottom: 18px;
+  color: #ffffff;
 }
 
 .auth-brand p {
-  color: #d1d5db;
+  color: #DAD7CD;
   font-size: 16px;
   margin-bottom: 24px;
+  opacity: 0.9;
 }
 
 .auth-card-app {
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 28px;
   padding: 32px;
   box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
@@ -97,7 +83,7 @@ body {
 .auth-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--beige);
+  background: #DAD7CD;
   padding: 6px;
   border-radius: 18px;
   margin-bottom: 28px;
@@ -105,7 +91,7 @@ body {
 
 .tab-btn {
   background: transparent;
-  color: var(--gris-oscuro);
+  color: #2B2E2C;
   border-radius: 14px;
   padding: 12px;
   font-weight: 600;
@@ -115,7 +101,7 @@ body {
 }
 
 .tab-btn.activo {
-  background: var(--verde-oscuro);
+  background: #3A5A40;
   color: white;
 }
 
@@ -127,7 +113,7 @@ body {
 
 .auth-form h2 {
   font-size: 24px;
-  color: var(--gris-oscuro);
+  color: #2B2E2C;
 }
 
 .auth-form p {
@@ -138,7 +124,7 @@ body {
 .auth-form input {
   width: 100%;
   padding: 14px 16px;
-  border: 1.5px solid var(--verde-oliva);
+  border: 2px solid #A3B18A;
   border-radius: 14px;
   font-size: 15px;
   transition: all 0.2s;
@@ -147,12 +133,16 @@ body {
 
 .auth-form input:focus {
   outline: none;
-  border-color: var(--verde-oscuro);
-  box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.15);
+  border-color: #3A5A40;
+  box-shadow: 0 0 0 4px rgba(58, 90, 64, 0.15);
+}
+
+.auth-form input::placeholder {
+  color: #9ca3af;
 }
 
 .btn-primary {
-  background: var(--verde-oscuro);
+  background: #3A5A40;
   color: white;
   padding: 14px;
   border-radius: 14px;
@@ -164,19 +154,32 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--verde-medio);
+  background: #588157;
   transform: translateY(-2px);
 }
 
 /* ========================= */
-/* APP SCREEN - MEJORADA CON COLORES */
+/* APP SCREEN */
 /* ========================= */
 .hero {
-  background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-muy-oscuro) 100%);
+  background: linear-gradient(135deg, #3A5A40 0%, #344E41 100%);
   color: white;
   padding: 48px 20px;
   text-align: center;
-  border-bottom: 4px solid var(--verde-oliva);
+  border-bottom: 4px solid #A3B18A;
+}
+
+.hero .badge {
+  display: inline-block;
+  background: rgba(163, 177, 138, 0.2);
+  color: #DAD7CD;
+  border: 1px solid rgba(163, 177, 138, 0.3);
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 .hero h1 {
@@ -185,7 +188,7 @@ body {
 }
 
 .hero p {
-  color: var(--beige);
+  color: #DAD7CD;
   font-size: 16px;
   opacity: 0.9;
 }
@@ -201,29 +204,29 @@ body {
 
 .stat-card {
   background: white;
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 24px 16px;
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
-  border: 1px solid var(--verde-oliva);
+  border: 1px solid #A3B18A;
 }
 
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--verde-medio);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #588157;
 }
 
 .stat-card h3 {
   font-size: 2.2rem;
-  color: var(--verde-oscuro);
+  color: #3A5A40;
   margin-bottom: 8px;
   font-weight: 700;
 }
 
 .stat-card p {
-  color: var(--verde-muy-oscuro);
+  color: #344E41;
   font-weight: 600;
   font-size: 13px;
   text-transform: uppercase;
@@ -241,16 +244,16 @@ body {
 
 .card {
   background: white;
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 28px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s, border-color 0.2s;
-  border: 1px solid var(--verde-oliva);
+  border: 1px solid #A3B18A;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--verde-medio);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #588157;
 }
 
 .profile-card {
@@ -260,7 +263,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  background: linear-gradient(135deg, #ffffff 0%, var(--crema-suave) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #F0EDE5 100%);
 }
 
 .profile-info {
@@ -281,18 +284,18 @@ body {
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--verde-oscuro);
-  background: var(--beige);
+  border: 3px solid #3A5A40;
+  background: #DAD7CD;
 }
 
 .profile-info h2 {
   font-size: 22px;
-  color: var(--verde-muy-oscuro);
+  color: #344E41;
 }
 
 .profile-info p {
   font-weight: 500;
-  color: var(--verde-oscuro);
+  color: #3A5A40;
 }
 
 .profile-info span {
@@ -313,7 +316,7 @@ body {
 .section-title h2 {
   font-size: 22px;
   margin-bottom: 6px;
-  color: var(--verde-muy-oscuro);
+  color: #344E41;
 }
 
 .section-title p {
@@ -329,7 +332,7 @@ body {
 .buscador-input {
   width: 100%;
   padding: 14px 20px;
-  border: 2px solid var(--verde-oliva);
+  border: 2px solid #A3B18A;
   border-radius: 40px;
   font-size: 15px;
   background: white;
@@ -338,14 +341,18 @@ body {
 
 .buscador-input:focus {
   outline: none;
-  border-color: var(--verde-oscuro);
+  border-color: #3A5A40;
   box-shadow: 0 0 0 4px rgba(58, 90, 64, 0.12);
+}
+
+.buscador-input::placeholder {
+  color: #9ca3af;
 }
 
 .input-moderno, textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1.5px solid var(--verde-oliva);
+  border: 2px solid #A3B18A;
   border-radius: 14px;
   font-family: inherit;
   font-size: 14px;
@@ -356,8 +363,12 @@ body {
 
 .input-moderno:focus, textarea:focus {
   outline: none;
-  border-color: var(--verde-oscuro);
+  border-color: #3A5A40;
   box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
+}
+
+.input-moderno::placeholder, textarea::placeholder {
+  color: #9ca3af;
 }
 
 textarea {
@@ -372,15 +383,15 @@ textarea {
   flex-wrap: wrap;
   margin: 16px 0;
   padding: 12px;
-  background: var(--crema-suave);
-  border-radius: var(--radius-sm);
+  background: #F0EDE5;
+  border-radius: 10px;
 }
 
 #colorPicker {
   width: 60px;
   height: 50px;
   border-radius: 12px;
-  border: 2px solid var(--verde-oliva);
+  border: 2px solid #A3B18A;
   cursor: pointer;
   background: white;
 }
@@ -390,9 +401,9 @@ textarea {
   padding: 12px 16px;
   border-radius: 14px;
   font-size: 14px;
-  color: var(--gris-oscuro);
+  color: #2B2E2C;
   flex: 1;
-  border: 1px solid var(--verde-oliva);
+  border: 1px solid #A3B18A;
 }
 
 .botones-accion {
@@ -405,7 +416,7 @@ textarea {
 button {
   padding: 12px 20px;
   border: none;
-  border-radius: var(--radius);
+  border-radius: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -418,26 +429,26 @@ button:hover {
 }
 
 .btn-primary {
-  background: var(--verde-oscuro);
+  background: #3A5A40;
   color: white;
 }
 
 .btn-primary:hover {
-  background: var(--verde-medio);
+  background: #588157;
 }
 
 .btn-secondary {
-  background: var(--verde-oliva);
-  color: var(--gris-oscuro);
+  background: #A3B18A;
+  color: #2B2E2C;
 }
 
 .btn-secondary:hover {
-  background: var(--verde-medio);
+  background: #588157;
   color: white;
 }
 
 .btn-edit {
-  background: var(--orange);
+  background: #f59e0b;
   color: white;
 }
 
@@ -455,7 +466,7 @@ button:hover {
 }
 
 .btn-delete {
-  background: var(--red);
+  background: #dc2626;
   color: white;
 }
 
@@ -468,8 +479,8 @@ button:hover {
   align-items: center;
   justify-content: center;
   min-height: 420px;
-  background: var(--crema-suave);
-  border-radius: var(--radius);
+  background: #F0EDE5;
+  border-radius: 16px;
   padding: 20px;
 }
 
@@ -490,7 +501,7 @@ button:hover {
 }
 
 .parte-activa {
-  stroke: var(--verde-oscuro);
+  stroke: #3A5A40;
   stroke-width: 5;
   filter: drop-shadow(0 0 5px rgba(58, 90, 64, 0.5));
 }
@@ -500,32 +511,32 @@ button:hover {
 }
 
 /* ========================= */
-/* TARJETAS DE DISEÑOS - CON AMOR Y COLORES */
+/* TARJETAS DE DISEÑOS */
 /* ========================= */
 
 .tarjeta-camiseta {
   background: white;
-  border-radius: var(--radius);
+  border-radius: 16px;
   padding: 24px;
   margin-bottom: 20px;
   display: grid;
   grid-template-columns: 1.4fr 0.6fr;
   gap: 24px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-  border-left: 4px solid var(--verde-oliva);
-  border-top: 1px solid var(--verde-oliva);
-  border-right: 1px solid var(--verde-oliva);
-  border-bottom: 1px solid var(--verde-oliva);
+  border-left: 4px solid #A3B18A;
+  border-top: 1px solid #A3B18A;
+  border-right: 1px solid #A3B18A;
+  border-bottom: 1px solid #A3B18A;
 }
 
 .tarjeta-camiseta:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
-  border-left-color: var(--verde-oscuro);
-  border-top-color: var(--verde-oscuro);
-  border-right-color: var(--verde-oscuro);
-  border-bottom-color: var(--verde-oscuro);
+  border-left-color: #3A5A40;
+  border-top-color: #3A5A40;
+  border-right-color: #3A5A40;
+  border-bottom-color: #3A5A40;
 }
 
 .camiseta-info {
@@ -537,12 +548,12 @@ button:hover {
 .camiseta-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: var(--verde-muy-oscuro);
+  color: #344E41;
   margin-bottom: 4px;
 }
 
 .camiseta-info .autor {
-  color: var(--verde-medio);
+  color: #588157;
   font-weight: 500;
   font-size: 14px;
 }
@@ -552,9 +563,9 @@ button:hover {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  background: var(--crema-suave);
+  background: #F0EDE5;
   padding: 8px 12px;
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
   margin: 4px 0;
 }
 
@@ -570,9 +581,9 @@ button:hover {
 
 .camiseta-info .desglose {
   font-size: 12px;
-  color: var(--verde-medio);
+  color: #588157;
   margin: 2px 0;
-  background: var(--beige);
+  background: #DAD7CD;
   padding: 4px 10px;
   border-radius: 20px;
   display: inline-block;
@@ -584,9 +595,9 @@ button:hover {
   line-height: 1.5;
   margin: 4px 0;
   padding: 8px 12px;
-  background: var(--crema-suave);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--verde-oliva);
+  background: #F0EDE5;
+  border-radius: 10px;
+  border-left: 3px solid #A3B18A;
 }
 
 /* MINIATURA DE CAMISETA */
@@ -594,15 +605,15 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, var(--crema-suave) 0%, var(--beige) 100%);
-  border-radius: var(--radius);
+  background: linear-gradient(135deg, #F0EDE5 0%, #DAD7CD 100%);
+  border-radius: 16px;
   padding: 16px;
   margin-top: 8px;
-  border: 2px solid var(--verde-oliva);
+  border: 2px solid #A3B18A;
 }
 
 .mini-camisa-wrapper:hover {
-  border-color: var(--verde-medio);
+  border-color: #588157;
 }
 
 .mini-svg {
@@ -617,16 +628,16 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* PALETA DE COLORES - AHORA CON LOS NUEVOS COLORES */
+/* PALETA DE COLORES */
 .paleta-colores {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
   padding: 10px 12px;
-  background: var(--crema-suave);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--verde-oliva);
+  background: #F0EDE5;
+  border-radius: 10px;
+  border: 1px solid #A3B18A;
 }
 
 .paleta-item {
@@ -649,7 +660,7 @@ button:hover {
 .color-dot-mini:hover {
   transform: scale(1.25);
   z-index: 2;
-  border-color: var(--verde-oscuro);
+  border-color: #3A5A40;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -668,11 +679,11 @@ button:hover {
 }
 
 .estrellas-votacion button {
-  background: var(--orange);
+  background: #f59e0b;
   color: white;
   padding: 8px 14px;
   font-size: 13px;
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
   font-weight: 600;
   transition: all 0.2s;
   border: none;
@@ -698,21 +709,21 @@ button:hover {
 .acciones-crud button {
   padding: 8px 16px;
   font-size: 13px;
-  border-radius: var(--radius-sm);
+  border-radius: 10px;
 }
 
 .acciones-crud .btn-edit {
-  background: var(--verde-oliva);
-  color: var(--gris-oscuro);
+  background: #A3B18A;
+  color: #2B2E2C;
 }
 
 .acciones-crud .btn-edit:hover {
-  background: var(--verde-medio);
+  background: #588157;
   color: white;
 }
 
 .acciones-crud .btn-delete {
-  background: var(--red);
+  background: #dc2626;
   color: white;
 }
 
@@ -722,10 +733,10 @@ button:hover {
 
 .info-text {
   font-size: 12px;
-  color: var(--verde-medio);
+  color: #588157;
   font-style: italic;
   text-align: center;
-  background: var(--beige);
+  background: #DAD7CD;
   padding: 6px 12px;
   border-radius: 20px;
 }
@@ -733,11 +744,11 @@ button:hover {
 .mensaje-vacio {
   text-align: center;
   padding: 60px 20px;
-  background: var(--crema-suave);
-  border-radius: var(--radius);
-  color: var(--verde-medio);
+  background: #F0EDE5;
+  border-radius: 16px;
+  color: #588157;
   font-size: 16px;
-  border: 2px dashed var(--verde-oliva);
+  border: 2px dashed #A3B18A;
 }
 
 /* ========================= */
